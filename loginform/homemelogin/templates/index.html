@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login-form in django</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	<script type="text/javascript" src="{% static 'script.js' %}"></script>
+</head>
+<body>
+<ul>
+	{% for data in formdata %}
+	<li>{{data.name}}:{{data.key}}</li>
+	{% endfor %} 
+</ul>
+<div class="login-page">
+  <div class="form">
+  <p>signup</p>
+    <form class="register-form" method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+      <input type="text" placeholder="name" name="name" />
+      <input type="password" placeholder="password" name="key" />
+      <input type="submit" value="submit">
+      
+    </form>
+    <p>login</p>
+    <form class="login-form" method="post" action="{% url 'login' %}">
+     {% csrf_token %}
+      <input type="text" placeholder="username"/ name="name"  autocomplete='off'>
+      <input type="password" placeholder="password" name="key" autocomplete='off'/>
+      <input type="submit" value="submit">
+      
+    </form>
+  </div>
+</div>
+</body>
+</html>
